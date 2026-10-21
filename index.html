@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A self-guided map of places to visit on the island of Corfu, Greece.">
+  <title>Corfu Guide | Places to visit</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="top-row">
+      <div class="heading">
+        <p class="eyebrow">Ionian island · Greece</p>
+        <h1>Corfu Guide</h1>
+        <p class="subtitle">Discover beaches, history and local favourites.</p>
+      </div>
+
+      <nav class="nav-links">
+        <a href="liste.html" class="nav-link">View List</a>
+      </nav>
+    </div>
+
+    <div class="filters" id="filters">
+      <button class="filter-btn active" data-category="all">All</button>
+      <button class="filter-btn" data-category="beach">Beaches</button>
+      <button class="filter-btn" data-category="history">Lieux Historiques</button>
+      <button class="filter-btn" data-category="village">Villages</button>
+      <button class="filter-btn" data-category="food">Food</button>
+      <button class="filter-btn" data-category="nature">Nature</button>
+    </div>
+
+    <div class="search-container">
+      <input type="text" id="search-input" placeholder="Search for a place..." aria-label="Search for a place to visit">
+      <div class="map-key" aria-label="Map information">
+        <span class="place-count"><span id="place-count">0</span> places</span>
+        <span class="map-key__hint">Select a marker to explore</span>
+      </div>
+    </div>
+  </header>
+  <main>
+    <div id="map" aria-label="Interactive map of places to visit in Corfu">
+      <p class="map-status" id="map-status" role="status">
+        Chargement de la carte…
+      </p>
+    </div>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+  <script src="places.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
