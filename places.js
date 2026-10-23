@@ -7,10 +7,17 @@ const places = [
     description: "A UNESCO-listed old town filled with Venetian architecture, arcades and lively squares."
   },
   {
+    name: "Bella Vista Hotel",
+    category: "hotel",
+    lat: 39.54184845032248,   
+    lng: 19.91411194654972,   
+    description: "Our base in Benitses, a few minutes from the beach."
+  },
+  {
     name: "Benitses Beach",
     category: "beach",
-    lat: 39.54341591232303,
-    lng: 19.914695686683704,
+    lat: 39.542779307683944,
+    lng: 19.91464849022644,
     description: "A calm beach just a few steps from the traditional fishing village of Benitses."
   },
   {

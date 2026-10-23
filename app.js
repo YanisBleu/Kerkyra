@@ -26,22 +26,16 @@ tileLayer.on("tileload", () => {
 tileLayer.on("tileerror", () => {
  if (!hasLoadedTile) {
    mapStatus.textContent =
-     "La carte ne peut pas charger son fond. Vérifie ta connexion puis ouvre le projet avec un serveur local.";
+     "The map background could not load. Check your connection and try again.";
    mapStatus.classList.add("is-visible");
  }
 });
 
-// Also show a useful message when requests are silently blocked by the browser.
-window.setTimeout(() => {
- if (!hasLoadedTile) {
-   mapStatus.textContent =
-     "Le fond de carte est indisponible. Lance le projet avec « python -m http.server » puis ouvre http://localhost:8000.";
-   mapStatus.classList.add("is-visible");
- }
-}, 3000);
-
 // Fit the initial view around every place so no marker is hidden on small screens.
-const bounds = L.latLngBounds(places.map(place => [place.lat, place.lng]));
+// Filter out placeholders (lat === 0) to avoid centering the map on the coast of Africa.
+const bounds = L.latLngBounds(
+  places.filter(place => place.lat !== 0).map(place => [place.lat, place.lng])
+);
 map.fitBounds(bounds, { padding: [24, 24] });
 
 // Check if a specific place was requested via URL parameters
@@ -58,19 +52,48 @@ if (placeName) {
 }
 
 // Add one marker and popup for every place in the data file.
+const categoryLabels = {
+  beach: "Beach",
+  history: "Historic site",
+  village: "Village",
+  food: "Food",
+  nature: "Nature",
+  hotel: "Hotel"
+};
+
+const categoryColors = {
+  beach: "#d97706",
+  history: "#78350f",
+  village: "#166534",
+  food: "#9a3412",
+  nature: "#1e40af",
+  hotel: "#16324f"
+};
+
 const markers = [];
 
 places.forEach(place => {
-  const marker = L.marker([place.lat, place.lng])
+  const radius = place.category === "hotel" ? "marker-hotel" : "";
+  const color = categoryColors[place.category] || "#333";
+  
+  const marker = L.marker([place.lat, place.lng], {
+    icon: L.divIcon({
+      className: "custom-div-icon",
+      html: `<div class="custom-marker ${radius}" style="background: ${color};"></div>`,
+      iconSize: [20, 20],
+      iconAnchor: [10, 20]
+    })
+  })
     .addTo(map)
     .bindPopup(`
       <article class="place-popup">
-        <p class="place-popup__category">${place.category}</p>
+        <p class="place-popup__category">${categoryLabels[place.category] || place.category}</p>
         <h2>${place.name}</h2>
         <p>${place.description}</p>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=${place.lat},${place.lng}" target="_blank" rel="noopener" class="directions-link">Get directions</a>
       </article>
     `);
-  
+
   // Store marker and its data for filtering and searching
   markers.push({ marker, category: place.category, name: place.name });
 
@@ -109,8 +132,12 @@ const filterButtons = document.querySelectorAll(".filter-btn");
 
 filterButtons.forEach(btn => {
   btn.addEventListener("click", () => {
-    filterButtons.forEach(b => b.classList.remove("active"));
+    filterButtons.forEach(b => {
+      b.classList.remove("active");
+      b.setAttribute("aria-pressed", "false");
+    });
     btn.classList.add("active");
+    btn.setAttribute("aria-pressed", "true");
     updateMarkers();
   });
 });

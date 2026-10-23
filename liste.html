@@ -93,8 +93,8 @@
       const card = document.createElement('div');
       card.className = 'place-card';
       
-      // On clique sur une carte pour retourner à la carte et centrer sur le lieu
-      // On utilise un paramètre URL pour savoir quel lieu ouvrir
+      // Click a card to return to the map and center on the place
+      // Use a URL parameter to know which place to open
       card.onclick = () => {
         const params = new URLSearchParams();
         params.set('place', place.name);

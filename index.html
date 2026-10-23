@@ -23,12 +23,13 @@
     </div>
 
     <div class="filters" id="filters">
-      <button class="filter-btn active" data-category="all">All</button>
-      <button class="filter-btn" data-category="beach">Beaches</button>
-      <button class="filter-btn" data-category="history">Lieux Historiques</button>
-      <button class="filter-btn" data-category="village">Villages</button>
-      <button class="filter-btn" data-category="food">Food</button>
-      <button class="filter-btn" data-category="nature">Nature</button>
+      <button class="filter-btn active" data-category="all" aria-pressed="true">All</button>
+      <button class="filter-btn" data-category="beach" aria-pressed="false">Beaches</button>
+      <button class="filter-btn" data-category="hotel" aria-pressed="false">Hotel</button>
+      <button class="filter-btn" data-category="history" aria-pressed="false">Historic Sites</button>
+      <button class="filter-btn" data-category="village" aria-pressed="false">Villages</button>
+      <button class="filter-btn" data-category="food" aria-pressed="false">Food</button>
+      <button class="filter-btn" data-category="nature" aria-pressed="false">Nature</button>
     </div>
 
     <div class="search-container">
@@ -42,7 +43,7 @@
   <main>
     <div id="map" aria-label="Interactive map of places to visit in Corfu">
       <p class="map-status" id="map-status" role="status">
-        Chargement de la carte…
+        Loading map…
       </p>
     </div>
   </main>

@@ -112,6 +112,58 @@ h1 {
   font-weight: 700;
 }
 
+.directions-link {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #16324f;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 0.85rem;
+  border: 1px solid #16324f;
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.3rem;
+  transition: all 0.2s ease;
+}
+
+.directions-link:hover {
+  background: #16324f;
+  color: #fff;
+}
+
+/* Custom Map Markers */
+.custom-marker {
+  width: 20px;
+  height: 20px;
+  border-radius: 50% 50% 50% 0;
+  background: #333;
+  position: absolute;
+  transform: rotate(-45deg);
+  left: 50%;
+  top: 50%;
+  margin: -10px 0 0 -10px;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.custom-marker::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: #fff;
+  position: absolute;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.marker-hotel {
+  width: 26px;
+  height: 26px;
+  margin: -13px 0 0 -13px;
+}
+
+
 .search-container {
   margin: 0.5rem 0;
   display: flex;
