@@ -10,9 +10,10 @@ A self-guided, map-based guide to Corfu, Greece. Explore beaches, historic sites
 
 - Interactive map centred on Corfu, built with Leaflet and OpenStreetMap
 - One marker per place, with a popup showing its name and description
-- Category filters: All, Beaches, Historic Sites, Villages, Food, Nature
+- Category filters: All, Beaches, Historic Sites, Villages, Food, Nature, Hotels
 - A live counter showing how many places are currently displayed
 - A separate list view ([liste.html](liste.html)) with the same places
+- Search by place name
 - Responsive layout for mobile and desktop
 
 ## Tech stack
@@ -61,7 +62,7 @@ Then visit `http://localhost:8000`.
 
 ## Data accuracy
 
-Coordinates and descriptions were checked on public maps but are approximate. They are intended for a demonstration project, not for navigation.
+Coordinates are approximate and should be verified before use.
 
 ## What I learned
 

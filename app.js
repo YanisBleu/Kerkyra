@@ -46,8 +46,6 @@ if (placeName) {
   const targetPlace = places.find(p => p.name === placeName);
   if (targetPlace) {
     map.setView([targetPlace.lat, targetPlace.lng], 15);
-    // Find the marker for this place and open its popup
-    // We need to wait for markers to be created first
   }
 }
 
